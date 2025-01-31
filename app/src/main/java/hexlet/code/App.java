@@ -15,11 +15,11 @@ import picocli.CommandLine.Parameters;
 class App implements Runnable {
 /*
     @Parameters(index = "0", description = "name")
-    boolean n;
+    String n;
 */
-    @Option(names = {"-h", "--help"}, description = "Show this help message and exit.")
+    @Option(names = {"-h", "--help"}, usageHelp = true, description = "Show this help message and exit.")
     private boolean help = true;
-    @Option(names = {"-V", "--version"}, description = "Print version information and exit.")
+    @Option(names = {"-V", "--version"}, versionHelp = true, description = "Print version information and exit.")
     private boolean version = true;
 
     public static void main(String[] args) {
@@ -27,9 +27,10 @@ class App implements Runnable {
         //System.exit();
 
     }
+
     @Override
     public void run() {
-        System.out.println("Hello World222!");
+        System.out.println("Hello World!");
         System.out.println(help);
         System.out.println(version);
     }
