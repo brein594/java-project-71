@@ -5,9 +5,8 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.Files;
+import hexlet.code.Differ;
+
 
 @Command(
         name = "gendiff",
@@ -31,13 +30,6 @@ class App implements Runnable {
     String format = "stylish";
 
 
-    private static Path readFixture(String filepath) throws Exception {
-        return Paths.get(filepath);
-    }
-
-    private static String readFile(Path filepath) throws Exception {
-        return Files.readString(filepath).trim();
-    }
 
     public static void main(String[] args) {
         new CommandLine(new App()).execute(args);
@@ -51,5 +43,19 @@ class App implements Runnable {
         System.out.println(help);
         System.out.println(version);
         System.out.println(format);
+        try {
+            var f1 = Differ.readFile(Differ.readFixture(filepath1));
+            System.out.println(f1);
+            System.out.println(Differ.getData(f1));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            var f2 = Differ.readFile(Differ.readFixture(filepath2));
+            System.out.println(f2);
+            System.out.println(Differ.getData(f2));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
