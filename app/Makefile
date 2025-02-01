@@ -11,3 +11,7 @@ check:
 	./gradlew check
 run-dist1:
 	./build/install/app/bin/app -h
+run-dist2:
+	./build/install/app/bin/app -h -f=upper ./f1 ./f2
+run-dist3:
+	./build/install/app/bin/app -f=upper ./f1 ./f2
