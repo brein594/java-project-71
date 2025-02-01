@@ -16,4 +16,4 @@ run-dist2:
 run-dist3:
 	./build/install/app/bin/app -f=upper ~/play_brain/java-project-71/file1.json ~/play_brain/java-project-71/file2.json
 run-dist4:
-	./build/install/app/bin/app -f=upper /home/hexlet/play_brain/java-project-71/file1.json /home/hexlet/play_brain/java-project-71/file2.json
+	./build/install/app/bin/app /home/hexlet/play_brain/java-project-71/file1.json /home/hexlet/play_brain/java-project-71/file2.json
