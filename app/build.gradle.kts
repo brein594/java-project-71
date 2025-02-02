@@ -1,6 +1,7 @@
 plugins {
     id("java")
     application
+    //jacoco
     checkstyle
 }
 
@@ -27,6 +28,7 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    //finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
 }
 application {
     mainClass = "hexlet.code.App"

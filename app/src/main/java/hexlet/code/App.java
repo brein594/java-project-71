@@ -14,7 +14,6 @@ import hexlet.code.Differ;
         version = "gendiff 1.0",
         description = "Compares two configuration files and shows a difference."
 )
-
 class App implements Runnable {
 
     @Parameters(index = "0", description = "path to first file")
@@ -28,7 +27,6 @@ class App implements Runnable {
     private boolean version = true;
     @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
     String format = "stylish";
-
 
 
     public static void main(String[] args) {
@@ -47,7 +45,6 @@ class App implements Runnable {
         }
         System.out.println(result);
     }
-
 
 
 }

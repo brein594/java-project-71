@@ -23,17 +23,18 @@ public class Differ {
 
     public static <T> HashMap<String, Object> getData(String content) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        var result = mapper.readValue(content,  new TypeReference<HashMap<String, Object>>(){});
+        var result = mapper.readValue(content, new TypeReference<HashMap<String, Object>>() {
+        });
         return result;
     }
 
     public static String generate(String filePath1, String filePath2) throws Exception {
         var textFile1 = readFile(readFixture(filePath1));
         var textFile2 = readFile(readFixture(filePath2));
-        var DataFile1 = getData(textFile1);
-        var DataFile2 = getData(textFile2);
-        var listKeys1 = new ArrayList<>(DataFile1.keySet());
-        var listKeys2 = new ArrayList<>(DataFile2.keySet());
+        var dataFile1 = getData(textFile1);
+        var dataFile2 = getData(textFile2);
+        var listKeys1 = new ArrayList<>(dataFile1.keySet());
+        var listKeys2 = new ArrayList<>(dataFile2.keySet());
         var listKeys3 = new ArrayList<>(CollectionUtils.union(listKeys1, listKeys2));
         Collections.sort(listKeys3);
         /*
@@ -47,38 +48,38 @@ public class Differ {
          */
         var result = new StringBuilder();
         for (var key : listKeys3) {
-            if (DataFile1.getOrDefault(key, null) != null) {
-                if (DataFile2.getOrDefault(key, null) != null) {
-                    if(DataFile1.get(key).equals(DataFile2.get(key))) {
+            if (dataFile1.getOrDefault(key, null) != null) {
+                if (dataFile2.getOrDefault(key, null) != null) {
+                    if (dataFile1.get(key).equals(dataFile2.get(key))) {
                         result.append("  ");
                         result.append(key);
                         result.append(": ");
-                        result.append(DataFile1.get(key));
+                        result.append(dataFile1.get(key));
                         result.append(System.lineSeparator());
                     } else {
                         result.append("- ");
                         result.append(key);
                         result.append(": ");
-                        result.append(DataFile1.get(key));
+                        result.append(dataFile1.get(key));
                         result.append(System.lineSeparator());
                         result.append("+ ");
                         result.append(key);
                         result.append(": ");
-                        result.append(DataFile2.get(key));
+                        result.append(dataFile2.get(key));
                         result.append(System.lineSeparator());
                     }
                 } else {
                     result.append("- ");
                     result.append(key);
                     result.append(": ");
-                    result.append(DataFile1.get(key));
+                    result.append(dataFile1.get(key));
                     result.append(System.lineSeparator());
                 }
-            } else if (DataFile2.getOrDefault(key, null) != null) {
+            } else if (dataFile2.getOrDefault(key, null) != null) {
                 result.append("+ ");
                 result.append(key);
                 result.append(": ");
-                result.append(DataFile2.get(key));
+                result.append(dataFile2.get(key));
                 result.append(System.lineSeparator());
             } else {
                 result.append(System.lineSeparator());
