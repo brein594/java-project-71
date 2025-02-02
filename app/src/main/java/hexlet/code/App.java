@@ -5,7 +5,7 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-import hexlet.code.Differ;
+//import hexlet.code.Differ;
 
 
 @Command(
@@ -14,7 +14,7 @@ import hexlet.code.Differ;
         version = "gendiff 1.0",
         description = "Compares two configuration files and shows a difference."
 )
-class App implements Runnable {
+class  App implements Runnable {
 
     @Parameters(index = "0", description = "path to first file")
     String filepath1;
@@ -29,14 +29,18 @@ class App implements Runnable {
     String format = "stylish";
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+
+
         new CommandLine(new App()).execute(args);
         //System.exit();
 
     }
 
+
     @Override
     public void run() {
+
         String result = "";
         try {
             result = Differ.generate(filepath1, filepath2);
