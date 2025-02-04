@@ -43,7 +43,7 @@ class  App implements Runnable {
 
         String result = "";
         try {
-            result = Differ.generate(filepath1, filepath2);
+            result = Differ.generateYml(filepath1, filepath2);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

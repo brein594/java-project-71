@@ -1,3 +1,5 @@
 /.idea
 /app/.gradle/
 /app/build/
+/app/diffJSON.cast
+/app/diffYAML.cast

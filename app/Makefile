@@ -29,3 +29,9 @@ run-dist3:
 	./build/install/app/bin/app -f=upper ~/play_brain/java-project-71/app/src/test/resources/file1.json ~/play_brain/java-project-71/app/src/test/resources/file2.json
 run-dist4:
 	./build/install/app/bin/app /home/hexlet/play_brain/java-project-71/app/src/test/resources/file1.json  /home/hexlet/play_brain/java-project-71/app/src/test/resources/file2.json
+run-dist5:
+	./build/install/app/bin/app /home/hexlet/play_brain/java-project-71/app/src/test/resources/file1.yml  /home/hexlet/play_brain/java-project-71/app/src/test/resources/file2.yml
+run-dist6:
+	./build/install/app/bin/app /home/hexlet/play_brain/java-project-71/app/src/test/resources/file1s9.yml  /home/hexlet/play_brain/java-project-71/app/src/test/resources/file2s9.yml
+run-dist7:
+	./build/install/app/bin/app /home/hexlet/play_brain/java-project-71/app/src/test/resources/file1s9.yml  /home/hexlet/play_brain/java-project-71/app/src/test/resources/file2s9.yml
