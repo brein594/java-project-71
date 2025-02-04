@@ -4,6 +4,7 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
+import java.util.concurrent.Callable;
 
 //import hexlet.code.Differ;
 
@@ -14,7 +15,7 @@ import picocli.CommandLine.Parameters;
         version = "gendiff 1.0",
         description = "Compares two configuration files and shows a difference."
 )
-class  App implements Runnable {
+class  App implements Callable<String> {
 
     @Parameters(index = "0", description = "path to first file")
     String filepath1;
@@ -31,15 +32,14 @@ class  App implements Runnable {
 
     public static void main(String[] args) throws Exception {
 
-
-        new CommandLine(new App()).execute(args);
-        //System.exit();
+        var exitCode = new CommandLine(new App()).execute(args);
+        System.exit(exitCode);
 
     }
 
 
     @Override
-    public void run() {
+    public String call() throws Exception {
 
         String result = "";
         try {
@@ -48,6 +48,7 @@ class  App implements Runnable {
             throw new RuntimeException(e);
         }
         System.out.println(result);
+        return result;
     }
 
 
