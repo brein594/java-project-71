@@ -33,15 +33,15 @@ public class Differ {
     }
 
 
-    public static String generate(String filePath1, String filePath2) throws Exception {
+    public static String generate(String filePath1, String filePath2, String formatName) throws Exception {
         var textFile1 = readFile(readPathFile(filePath1));
         var textFile2 = readFile(readPathFile(filePath2));
         var typeFile1 = getType(readPathFile(filePath1));
         var typeFile2 = getType(readPathFile(filePath2));
-        var dataFile1 = Parser.getData(textFile1,typeFile1);
-        var dataFile2 = Parser.getData(textFile2,typeFile2);
+        var dataFile1 = Parser.getData(textFile1, typeFile1);
+        var dataFile2 = Parser.getData(textFile2, typeFile2);
         var listUnion = listSortUnion(dataFile1, dataFile2);
-        return WriteResult.getResult(listUnion, dataFile1, dataFile2);
+        return Formatter.getResult(listUnion, dataFile1, dataFile2, formatName);
     }
 
 /*

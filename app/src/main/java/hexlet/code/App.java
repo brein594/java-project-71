@@ -4,6 +4,7 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
+
 import java.util.concurrent.Callable;
 
 //import hexlet.code.Differ;
@@ -15,7 +16,7 @@ import java.util.concurrent.Callable;
         version = "gendiff 1.0",
         description = "Compares two configuration files and shows a difference."
 )
-class  App implements Callable<String> {
+class App implements Callable<String> {
 
     @Parameters(index = "0", description = "path to first file")
     String filepath1;
@@ -26,8 +27,8 @@ class  App implements Callable<String> {
     private boolean help = true;
     @Option(names = {"-V", "--version"}, versionHelp = true, description = "Print version information and exit.")
     private boolean version = true;
-    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
-    String format = "stylish";
+    @Option(names = {"-f", "--format"},defaultValue = "stylish", description = "output format [default: stylish]")
+    String formatName;
 
 
     public static void main(String[] args) throws Exception {
@@ -43,10 +44,11 @@ class  App implements Callable<String> {
 
         String result = "";
         try {
-            result = Differ.generate(filepath1, filepath2);
+            result = Differ.generate(filepath1, filepath2, formatName);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        System.out.println(formatName);
         System.out.println(result);
         return result;
     }

@@ -3,6 +3,7 @@ package hexlet.code;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+
 import java.util.HashMap;
 
 
@@ -12,13 +13,16 @@ public class Parser {
         switch (type) {
             case "json":
                 ObjectMapper mapper = new ObjectMapper();
-                return mapper.readValue(content, new TypeReference<HashMap<String, Object>>(){});
+                return mapper.readValue(content, new TypeReference<HashMap<String, Object>>() {
+                });
             case "yml":
                 ObjectMapper mapper1 = new YAMLMapper();
-                return mapper1.readValue(content, new TypeReference<HashMap<String, Object>>(){});
+                return mapper1.readValue(content, new TypeReference<HashMap<String, Object>>() {
+                });
             default:
                 ObjectMapper mapper3 = new ObjectMapper();
-                return mapper3.readValue(content, new TypeReference<HashMap<String, Object>>(){});
+                return mapper3.readValue(content, new TypeReference<HashMap<String, Object>>() {
+                });
         }
     }
 /*
