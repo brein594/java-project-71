@@ -10,13 +10,21 @@ import java.nio.file.Paths;
 
 class AppTest {
     @Test
-    public void getDataWorkTest() throws Exception {
+    public void getDataWorkJSONTest() throws Exception {
         var expected = new HashMap<String, Object>(Map.of("host", "hexlet.io", "timeout", "50"));
         var string = "{ \"host\" : \"hexlet.io\", \"timeout\" : \"50\" }";
-        var actual = Parser.getData(string);
+        var actual = Parser.getData(string, "json");
         assertEquals(expected, actual, "errorTest");
     }
 
+    @Test
+    public void getDataWorkYMLTest() throws Exception {
+        var expected = new HashMap<String, Object>(Map.of("host", "hexlet.io", "timeout", "50"));
+        var string = "{ \"host\" : \"hexlet.io\", \"timeout\" : \"50\" }";
+        var actual = Parser.getData(string, "yml");
+        assertEquals(expected, actual, "errorTest");
+    }
+/*
     @Test
     public void getDataYmlWorkTest() throws Exception {
         var expected = new HashMap<String, Object>(Map.of("host", "hexlet.io", "timeout", "50"));
@@ -26,7 +34,7 @@ class AppTest {
         System.out.println(actual);
         assertEquals(expected, actual, "errorTest");
     }
-
+*/
     @Test
     public void readPathFileTest() throws Exception {
         var expected = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file1.json";
@@ -58,7 +66,7 @@ class AppTest {
         String actual = Differ.generate(path1, path2);
         assertEquals(expected, actual, "errorTest");
     }
-
+/*
     @Test
     public void generateYmlTest() throws Exception {
         String expected = "{\n"
@@ -74,6 +82,8 @@ class AppTest {
         String actual = Differ.generateYml(path1, path2);
         assertEquals(expected, actual, "errorTest");
     }
+
+ */
 
 
 }

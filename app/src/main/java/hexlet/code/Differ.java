@@ -4,11 +4,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.io.FilenameUtils;
 
 public class Differ {
 
@@ -20,128 +20,40 @@ public class Differ {
         return Files.readString(filepath).trim();
     }
 
+    public static String getType(Path path) {
+        return FilenameUtils.getExtension(String.valueOf(path));
+    }
+
+    private static List<String> listSortUnion(Map<String, Object> data1, Map<String, Object> data2) {
+        var listKeys1 = new ArrayList<>(data1.keySet());
+        var listKeys2 = new ArrayList<>(data2.keySet());
+        var listKeys3 = new ArrayList<>(CollectionUtils.union(listKeys1, listKeys2));
+        Collections.sort(listKeys3);
+        return listKeys3;
+    }
+
 
     public static String generate(String filePath1, String filePath2) throws Exception {
         var textFile1 = readFile(readPathFile(filePath1));
         var textFile2 = readFile(readPathFile(filePath2));
-        var dataFile1 = Parser.getData(textFile1);
-        var dataFile2 = Parser.getData(textFile2);
-        var listKeys1 = new ArrayList<>(dataFile1.keySet());
-        var listKeys2 = new ArrayList<>(dataFile2.keySet());
-        var listKeys3 = new ArrayList<>(CollectionUtils.union(listKeys1, listKeys2));
-        Collections.sort(listKeys3);
-        /*
-        LinkedHashMap<String, Object> sortDataFile1 = DataFile1.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByKey())
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
-         */
-        var result = new StringBuilder("{\n");
-        for (var key : listKeys3) {
-            if (dataFile1.getOrDefault(key, null) != null) {
-                if (dataFile2.getOrDefault(key, null) != null) {
-                    if (dataFile1.get(key).equals(dataFile2.get(key))) {
-                        result.append("  ");
-                        result.append(key);
-                        result.append(": ");
-                        result.append(dataFile1.get(key));
-                        result.append(System.lineSeparator());
-                    } else {
-                        result.append("- ");
-                        result.append(key);
-                        result.append(": ");
-                        result.append(dataFile1.get(key));
-                        result.append(System.lineSeparator());
-                        result.append("+ ");
-                        result.append(key);
-                        result.append(": ");
-                        result.append(dataFile2.get(key));
-                        result.append(System.lineSeparator());
-                    }
-                } else {
-                    result.append("- ");
-                    result.append(key);
-                    result.append(": ");
-                    result.append(dataFile1.get(key));
-                    result.append(System.lineSeparator());
-                }
-            } else if (dataFile2.getOrDefault(key, null) != null) {
-                result.append("+ ");
-                result.append(key);
-                result.append(": ");
-                result.append(dataFile2.get(key));
-                result.append(System.lineSeparator());
-            } else {
-                result.append(System.lineSeparator());
-            }
-        }
-        result.append("}");
-        return result.toString();
+        var typeFile1 = getType(readPathFile(filePath1));
+        var typeFile2 = getType(readPathFile(filePath2));
+        var dataFile1 = Parser.getData(textFile1,typeFile1);
+        var dataFile2 = Parser.getData(textFile2,typeFile2);
+        var listUnion = listSortUnion(dataFile1, dataFile2);
+        return WriteResult.getResult(listUnion, dataFile1, dataFile2);
     }
 
-
+/*
     public static String generateYml(String filePath1, String filePath2) throws Exception {
         var textFile1 = readFile(readPathFile(filePath1));
         var textFile2 = readFile(readPathFile(filePath2));
         var dataFile1 = Parser.getDataYml(textFile1);
         var dataFile2 = Parser.getDataYml(textFile2);
-        var listKeys1 = new ArrayList<>(dataFile1.keySet());
-        var listKeys2 = new ArrayList<>(dataFile2.keySet());
-        var listKeys3 = new ArrayList<>(CollectionUtils.union(listKeys1, listKeys2));
-        Collections.sort(listKeys3);
-        /*
-        LinkedHashMap<String, Object> sortDataFile1 = DataFile1.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByKey())
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
-         */
-        var result = new StringBuilder("{\n");
-        for (var key : listKeys3) {
-            if (dataFile1.getOrDefault(key, null) != null) {
-                if (dataFile2.getOrDefault(key, null) != null) {
-                    if (dataFile1.get(key).equals(dataFile2.get(key))) {
-                        result.append("  ");
-                        result.append(key);
-                        result.append(": ");
-                        result.append(dataFile1.get(key));
-                        result.append(System.lineSeparator());
-                    } else {
-                        result.append("- ");
-                        result.append(key);
-                        result.append(": ");
-                        result.append(dataFile1.get(key));
-                        result.append(System.lineSeparator());
-                        result.append("+ ");
-                        result.append(key);
-                        result.append(": ");
-                        result.append(dataFile2.get(key));
-                        result.append(System.lineSeparator());
-                    }
-                } else {
-                    result.append("- ");
-                    result.append(key);
-                    result.append(": ");
-                    result.append(dataFile1.get(key));
-                    result.append(System.lineSeparator());
-                }
-            } else if (dataFile2.getOrDefault(key, null) != null) {
-                result.append("+ ");
-                result.append(key);
-                result.append(": ");
-                result.append(dataFile2.get(key));
-                result.append(System.lineSeparator());
-            } else {
-                result.append(System.lineSeparator());
-            }
-        }
-        result.append("}");
-        return result.toString();
+        var listUnion = listSortUnion(dataFile1, dataFile2);
+        return WriteResult.getResult(listUnion, dataFile1, dataFile2);
     }
+
+ */
 
 }
