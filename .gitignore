@@ -4,4 +4,5 @@
 /app/.idea/
 /app/diffJSON.cast
 /app/diffYAML.cast
-/app/PlainStyle.cas
+/app/PlainStyle.cast
+/app/JsonYml.cast
