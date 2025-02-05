@@ -1,6 +1,7 @@
 /.idea
 /app/.gradle/
 /app/build/
+/app/.idea/
 /app/diffJSON.cast
 /app/diffYAML.cast
-/app/PlainStyle.cast
+/app/PlainStyle.cas
