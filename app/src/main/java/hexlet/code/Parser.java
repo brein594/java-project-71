@@ -9,35 +9,34 @@ import java.util.HashMap;
 
 public class Parser {
 
+    private static HashMap<String, Object> replacementNullToStringNull(HashMap<String, Object> map) {
+        var keys = map.keySet();
+        for (var key : keys) {
+            if (map.get(key) == null) {
+                map.put(key, "null");
+            }
+        }
+        return map;
+    }
+
     public static HashMap<String, Object> getData(String content, String type) throws Exception {
         switch (type) {
             case "json":
-                ObjectMapper mapper = new ObjectMapper();
-                return mapper.readValue(content, new TypeReference<HashMap<String, Object>>() {
+                ObjectMapper mapperJson = new ObjectMapper();
+                var resultJson = mapperJson.readValue(content, new TypeReference<HashMap<String, Object>>() {
                 });
+                return  replacementNullToStringNull(resultJson);
             case "yml":
-                ObjectMapper mapper1 = new YAMLMapper();
-                return mapper1.readValue(content, new TypeReference<HashMap<String, Object>>() {
+                ObjectMapper mapperYml = new YAMLMapper();
+                var resultYml = mapperYml.readValue(content, new TypeReference<HashMap<String, Object>>() {
                 });
+                return replacementNullToStringNull(resultYml);
             default:
-                ObjectMapper mapper3 = new ObjectMapper();
-                return mapper3.readValue(content, new TypeReference<HashMap<String, Object>>() {
+                ObjectMapper mapperDef = new ObjectMapper();
+                var resultYDef = mapperDef.readValue(content, new TypeReference<HashMap<String, Object>>() {
                 });
+                return replacementNullToStringNull(resultYDef);
         }
     }
-/*
-    public static HashMap<String, Object> getData(String content) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(content, new TypeReference<HashMap<String, Object>>(){});
-    }
-*/
-
-
-/*
-    public static HashMap<String, Object> getDataYml(String content) throws Exception {
-        ObjectMapper mapper = new YAMLMapper();
-        return mapper.readValue(content, new TypeReference<HashMap<String, Object>>(){});
-    }
-*/
 
 }
