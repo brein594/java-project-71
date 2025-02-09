@@ -24,7 +24,9 @@ public class PlainFormatters {
             if (data1.getOrDefault(key, null) != null) {
                 if (data2.getOrDefault(key, null) != null) {
                     if (!data1.get(key).equals(data2.get(key))) {
-                        if (result.length() != 0 ) {result.append(System.lineSeparator());}
+                        if (result.length() != 0) {
+                            result.append(System.lineSeparator());
+                        }
                         result.append("Property '");
                         result.append(key);
                         result.append("' was updated. From ");
@@ -36,7 +38,9 @@ public class PlainFormatters {
                         continue;
                     }
                 } else {
-                    if (result.length() != 0 ) {result.append(System.lineSeparator());}
+                    if (result.length() != 0) {
+                        result.append(System.lineSeparator());
+                    }
                     result.append("Property '");
                     result.append(key);
                     result.append("' was removed");
@@ -44,7 +48,9 @@ public class PlainFormatters {
                 }
             } else {
                 if (data2.getOrDefault(key, null) != null) {
-                    if (result.length() != 0 ) {result.append(System.lineSeparator());}
+                    if (result.length() != 0) {
+                        result.append(System.lineSeparator());
+                    }
                     result.append("Property '");
                     result.append(key);
                     result.append("' was added with value: ");
@@ -53,10 +59,8 @@ public class PlainFormatters {
                 } else {
                     continue;
                 }
-            }//else {
-            //  result.append(System.lineSeparator());
-            // }
-            //result.append(System.lineSeparator());
+            }
+
         }
         return result.toString();
     }

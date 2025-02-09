@@ -146,20 +146,20 @@ class AppTest {
     public void generateJsonStep11Test() throws Exception {
         String expected =
                 "{\n"
-                       + "    \"chars2\": [ [d, e, f], false ],\n"
-                       + "    \"checked\": [ false, true ],\n"
-                       + "    \"default\": [ null, [value1, value2] ],\n"
-                       + "    \"id\": [ 45, null ],\n"
-                       + "    \"key1\": [ \"value1\", \"not_value\" ],\n"
-                       + "    \"key2\": [ \"not_value\", \"value2\" ],\n"
-                       + "    \"numbers2\": [ [2, 3, 4, 5], [22, 33, 44, 55] ],\n"
-                       + "    \"numbers3\": [ [3, 4, 5], \"not_value\" ],\n"
-                       + "    \"numbers4\": [ \"not_value\", [4, 5, 6] ],\n"
-                       + "    \"obj1\": [ \"not_value\", complex_value ],\n"
-                       + "    \"setting1\": [ \"Some value\", \"Another value\" ],\n"
-                       + "    \"setting2\": [ 200, 300 ],\n"
-                       + "    \"setting3\": [ true, \"none\" ]\n"
-                       +  "}";
+                        + "    \"chars2\": [ [d, e, f], false ],\n"
+                        + "    \"checked\": [ false, true ],\n"
+                        + "    \"default\": [ null, [value1, value2] ],\n"
+                        + "    \"id\": [ 45, null ],\n"
+                        + "    \"key1\": [ \"value1\", \"not_value\" ],\n"
+                        + "    \"key2\": [ \"not_value\", \"value2\" ],\n"
+                        + "    \"numbers2\": [ [2, 3, 4, 5], [22, 33, 44, 55] ],\n"
+                        + "    \"numbers3\": [ [3, 4, 5], \"not_value\" ],\n"
+                        + "    \"numbers4\": [ \"not_value\", [4, 5, 6] ],\n"
+                        + "    \"obj1\": [ \"not_value\", complex_value ],\n"
+                        + "    \"setting1\": [ \"Some value\", \"Another value\" ],\n"
+                        + "    \"setting2\": [ 200, 300 ],\n"
+                        + "    \"setting3\": [ true, \"none\" ]\n"
+                        + "}";
         var path1 = "./src/test/resources/file1s9.json";
         var path2 = "./src/test/resources/file2s9.json";
         String actual = Differ.generate(path1, path2, "json");
