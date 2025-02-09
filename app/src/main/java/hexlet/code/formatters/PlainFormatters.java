@@ -36,20 +36,23 @@ public class PlainFormatters {
                     result.append("Property '");
                     result.append(key);
                     result.append("' was removed");
+                   result.append(System.lineSeparator());
+                }
+            } else {
+                if (data2.getOrDefault(key, null) != null) {
+                    result.append("Property '");
+                    result.append(key);
+                    result.append("' was added with value: ");
+                    result.append(complexValue(data2.get(key)));
+                    result.append("'");
                     result.append(System.lineSeparator());
                 }
-            } else if (data2.getOrDefault(key, null) != null) {
-                result.append("Property '");
-                result.append(key);
-                result.append("' was added with value: ");
-                result.append(complexValue(data2.get(key)));
-                //result.append("'");
-                result.append(System.lineSeparator());
-            } else {
-                result.append(System.lineSeparator());
-            }
+            }//else {
+              //  result.append(System.lineSeparator());
+           // }
+            //result.append(System.lineSeparator());
         }
-        return result.toString();
+        var resultEnd = result.toString();
+        return resultEnd.substring(0, resultEnd.length() - 3);
     }
-
 }
