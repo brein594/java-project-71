@@ -24,13 +24,13 @@ public class JsonFormatters {
                 if (data2.getOrDefault(key, null) != null) {
                     if (!data1.get(key).equals(data2.get(key))) {
                         result.append(System.lineSeparator());
-                        result.append("\"");
+                        result.append("    \"");
                         result.append(key);
                         result.append("\": ");
                         result.append(complexValue(data1.get(key)));
                         result.append(",");
                         result.append(System.lineSeparator());
-                        result.append("\"");
+                        result.append("    \"");
                         result.append(key);
                         result.append("\": ");
                         result.append(complexValue(data2.get(key)));
@@ -38,25 +38,25 @@ public class JsonFormatters {
                     }
                 } else {
                     result.append(System.lineSeparator());
-                    result.append("\"");
+                    result.append("    \"");
                     result.append(key);
                     result.append("\": ");
                     result.append(complexValue(data1.get(key)));
                     result.append(",");
                     result.append(System.lineSeparator());
-                    result.append("\"");
+                    result.append("    \"");
                     result.append(key);
                     result.append("\": ");
                     result.append("\"not_value\",");
                 }
             } else if (data2.getOrDefault(key, null) != null) {
                 result.append(System.lineSeparator());
-                result.append("\"");
+                result.append("    \"");
                 result.append(key);
                 result.append("\": ");
                 result.append("\"not_value\",");
                 result.append(System.lineSeparator());
-                result.append("\"");
+                result.append("    \"");
                 result.append(key);
                 result.append("\": ");
                 result.append(complexValue(data2.get(key)));
