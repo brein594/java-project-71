@@ -8,7 +8,7 @@ public class JsonFormatters {
         if (value.equals("null")) {
             return "null";
         }
-        if (value instanceof List || value instanceof Map) {
+        if (value instanceof Map) {
             return "[complex value]";
         }
         if (value instanceof String) {
@@ -26,46 +26,34 @@ public class JsonFormatters {
                         result.append(System.lineSeparator());
                         result.append("    \"");
                         result.append(key);
-                        result.append("\": ");
+                        result.append("\": [ ");
                         result.append(complexValue(data1.get(key)));
-                        result.append(",");
-                        result.append(System.lineSeparator());
-                        result.append("    \"");
-                        result.append(key);
-                        result.append("\": ");
+                        result.append(", ");
                         result.append(complexValue(data2.get(key)));
-                        result.append(",");
+                        result.append(" ],");
                     }
                 } else {
                     result.append(System.lineSeparator());
                     result.append("    \"");
                     result.append(key);
                     result.append("\": ");
+                    result.append("[ ");
                     result.append(complexValue(data1.get(key)));
-                    result.append(",");
-                    result.append(System.lineSeparator());
-                    result.append("    \"");
-                    result.append(key);
-                    result.append("\": ");
-                    result.append("\"not_value\",");
+                    result.append(", \"not_value\" ],");
                 }
             } else if (data2.getOrDefault(key, null) != null) {
                 result.append(System.lineSeparator());
                 result.append("    \"");
                 result.append(key);
                 result.append("\": ");
-                result.append("\"not_value\",");
-                result.append(System.lineSeparator());
-                result.append("    \"");
-                result.append(key);
-                result.append("\": ");
+                result.append("[ \"not_value\", ");
                 result.append(complexValue(data2.get(key)));
-                result.append(",");
+                result.append(" ],");
             } else {
                 result.append(System.lineSeparator());
             }
         }
         var resultEnd = result.toString();
-        return resultEnd.substring(0, resultEnd.length() - 2) + "\n}";
+        return resultEnd.substring(0, resultEnd.length() - 1) + "\n}";
     }
 }
