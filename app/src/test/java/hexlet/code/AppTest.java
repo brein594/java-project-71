@@ -39,7 +39,7 @@ class AppTest {
     @Test
     public void readPathFileTest() throws Exception {
         var expected = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file1.json";
-        var string = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file1.json";
+        var string = "./src/test/resources/file1.json";
         var actual = Differ.readPathFile(string).toString();
         assertEquals(expected, actual, "errorTest");
     }
@@ -47,7 +47,8 @@ class AppTest {
     @Test
     public void readFileTest() throws Exception {
         String expected = "test";
-        var path = Paths.get("/home/hexlet/play_brain/java-project-71/app/src/test/resources/file3.json");
+        //var path = Paths.get("/home/hexlet/play_brain/java-project-71/app/src/test/resources/file3.json");
+        var path = Paths.get("./src/test/resources/file3.json");
         String actual = Differ.readFile(path);
         assertEquals(expected, actual, "errorTest");
     }
@@ -62,8 +63,10 @@ class AppTest {
                 + "  + timeout: 20\n"
                 + "  + verbose: true\n"
                 + "}";
-        var path1 = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file1.json";
-        var path2 = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file2.json";
+        //var path1 = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file1.json";
+        var path1 = "./src/test/resources/file1.json";
+        //var path2 = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file2.json";
+        var path2 = "./src/test/resources/file2.json";
         String actual = Differ.generate(path1, path2, "stylish");
         assertEquals(expected, actual, "errorTest");
     }
@@ -75,8 +78,8 @@ class AppTest {
                         + "Property 'proxy' was removed\n"
                         + "Property 'timeout' was updated. From 50 to 20\n"
                         + "Property 'verbose' was added with value: true\n";
-        var path1 = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file1.json";
-        var path2 = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file2.json";
+        var path1 = "./src/test/resources/file1.json";
+        var path2 = "./src/test/resources/file2.json";
         String actual = Differ.generate(path1, path2, "plain");
         assertEquals(expected, actual, "errorTest");
     }
@@ -109,8 +112,8 @@ class AppTest {
                         + "  - setting3: true\n"
                         + "  + setting3: none\n"
                         + "}";
-        var path1 = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file1s9.json";
-        var path2 = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file2s9.json";
+        var path1 = "./src/test/resources/file1s9.json";
+        var path2 = "./src/test/resources/file2s9.json";
         String actual = Differ.generate(path1, path2, "stylish");
         assertEquals(expected, actual, "errorTest");
     }
@@ -133,9 +136,8 @@ class AppTest {
                         + "Property 'setting1' was updated. From 'Some value' to 'Another value'\n"
                         + "Property 'setting2' was updated. From 200 to 300\n"
                         + "Property 'setting3' was updated. From true to 'none'\n";
-
-        var path1 = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file1s9.json";
-        var path2 = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file2s9.json";
+        var path1 = "./src/test/resources/file1s9.json";
+        var path2 = "./src/test/resources/file2s9.json";
         String actual = Differ.generate(path1, path2, "plain");
         assertEquals(expected, actual, "errorTest");
     }
@@ -171,8 +173,8 @@ class AppTest {
                        + "\"setting3\": true,\n"
                        + "\"setting3\": \"none\n"
                        + "}";
-        var path1 = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file1s9.json";
-        var path2 = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file2s9.json";
+        var path1 = "./src/test/resources/file1s9.json";
+        var path2 = "./src/test/resources/file2s9.json";
         String actual = Differ.generate(path1, path2, "json");
         assertEquals(expected, actual, "errorTest");
     }
