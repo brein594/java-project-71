@@ -77,7 +77,7 @@ class AppTest {
                 "Property 'follow' was removed\n"
                         + "Property 'proxy' was removed\n"
                         + "Property 'timeout' was updated. From 50 to 20\n"
-                        + "Property 'verbose' was added with value: true\n";
+                        + "Property 'verbose' was added with value: true";
         var path1 = "./src/test/resources/file1.json";
         var path2 = "./src/test/resources/file2.json";
         String actual = Differ.generate(path1, path2, "plain");
