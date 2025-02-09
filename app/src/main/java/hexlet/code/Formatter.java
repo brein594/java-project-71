@@ -14,7 +14,7 @@ public class Formatter {
         String result;
         if (formatName.equals("plain")) {
             result = PlainFormatters.getAnswer(unionListKey, data1, data2);
-        } else if(formatName.equals("json")) {
+        } else if (formatName.equals("json")) {
             result = JsonFormatters.getAnswer(unionListKey, data1, data2);
         } else {
             result = StylishFormatters.getAnswer(unionListKey, data1, data2);
