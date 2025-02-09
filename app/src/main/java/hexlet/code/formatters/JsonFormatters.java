@@ -9,7 +9,7 @@ public class JsonFormatters {
             return "null";
         }
         if (value instanceof Map) {
-            return "[complex value]";
+            return "complex_value";
         }
         if (value instanceof String) {
             return "\"" + value + "\"";

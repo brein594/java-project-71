@@ -155,11 +155,11 @@ class AppTest {
                        + "    \"numbers2\": [ [2, 3, 4, 5], [22, 33, 44, 55] ],\n"
                        + "    \"numbers3\": [ [3, 4, 5], \"not_value\" ],\n"
                        + "    \"numbers4\": [ \"not_value\", [4, 5, 6] ],\n"
-                       + "    \"obj1\": [ \"not_value\", [complex value] ],\n"
+                       + "    \"obj1\": [ \"not_value\", complex_value ],\n"
                        + "    \"setting1\": [ \"Some value\", \"Another value\" ],\n"
                        + "    \"setting2\": [ 200, 300 ],\n"
                        + "    \"setting3\": [ true, \"none\" ]\n"
-                       + "}";
+                       +  "}";
         var path1 = "./src/test/resources/file1s9.json";
         var path2 = "./src/test/resources/file2s9.json";
         String actual = Differ.generate(path1, path2, "json");
