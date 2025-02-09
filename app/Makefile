@@ -37,3 +37,5 @@ run-dist7:
 	./build/install/app/bin/app /home/hexlet/play_brain/java-project-71/app/src/test/resources/file1s9.yml  /home/hexlet/play_brain/java-project-71/app/src/test/resources/file2s9.yml
 run-dist8:
 	./build/install/app/bin/app -f plain /home/hexlet/play_brain/java-project-71/app/src/test/resources/file1s9.json  /home/hexlet/play_brain/java-project-71/app/src/test/resources/file2s9.json
+run-dist8:
+	./build/install/app/bin/app -f json /home/hexlet/play_brain/java-project-71/app/src/test/resources/file1s9.json  /home/hexlet/play_brain/java-project-71/app/src/test/resources/file2s9.json
