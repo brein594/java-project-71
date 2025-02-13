@@ -25,12 +25,17 @@ public class Parser {
                 ObjectMapper mapperJson = new ObjectMapper();
                 var resultJson = mapperJson.readValue(content, new TypeReference<HashMap<String, Object>>() {
                 });
-                return  replacementNullToStringNull(resultJson);
+                return replacementNullToStringNull(resultJson);
             case "yml":
                 ObjectMapper mapperYml = new YAMLMapper();
                 var resultYml = mapperYml.readValue(content, new TypeReference<HashMap<String, Object>>() {
                 });
                 return replacementNullToStringNull(resultYml);
+            case "yaml":
+                ObjectMapper mapperYaml = new YAMLMapper();
+                var resultYaml = mapperYaml.readValue(content, new TypeReference<HashMap<String, Object>>() {
+                });
+                return replacementNullToStringNull(resultYaml);
             default:
                 ObjectMapper mapperDef = new ObjectMapper();
                 var resultYDef = mapperDef.readValue(content, new TypeReference<HashMap<String, Object>>() {

@@ -20,11 +20,13 @@ class App implements Callable<String> {
     private String filepath1;
     @Parameters(index = "1", description = "path to second file")
     private String filepath2;
-
+/*  //duplicate mixinStandardHelpOptions = true
     @Option(names = {"-h", "--help"}, usageHelp = true, description = "Show this help message and exit.")
     private boolean help = true;
     @Option(names = {"-V", "--version"}, versionHelp = true, description = "Print version information and exit.")
     private boolean version = true;
+
+ */
     @Option(names = {"-f", "--format"}, defaultValue = "stylish", description = "output format [default: stylish]")
     private String formatName;
 
