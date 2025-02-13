@@ -1,19 +1,16 @@
 name: test project
 on: push
-jobs: 
- build: 
-  runs-on: ubuntu-latest
-  steps:
-   - run: echo "🎉 Run test project"
-   - uses: actions/checkout@v4
-   - name: Set up JDK
-     uses: actions/setup-java@v4
-     with:
-       java-version: '21'
-       distribution: 'temurin'
-       architecture: x64
-       cache: 'gradle'
-       cache-dependency-path:
-           app/*.gradle*
-           app/**/gradle-wrapper.properties
-   - run: ./gradlew build --no-daemon
+jobs:
+  build:
+    name: Build and Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Build and Run Tests
+        run: ./app/make test
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v5
+        if: success() || failure() # always run even if the previous step fails
+        with:
+          report_paths: '**/app/build/test-results/test/TEST-*.xml'
