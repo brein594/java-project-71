@@ -24,8 +24,9 @@ jobs:
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v9.0.0
         env:
-         CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-         JACOCO_SOURCE_PATH: ${{github.workspace}}app/src/main/java
+         #CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+         CC_TEST_REPORTER_ID: c8cc07f620d3e010e352383a5a460f586654d7bd38ad174dbca1380f947455ba
+         #JACOCO_SOURCE_PATH: ${{github.workspace}}app/src/main/java
         with:
          workingDirectory: ./app
          coverageCommand: ./gradlew jacocoTestReport
