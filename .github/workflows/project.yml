@@ -27,7 +27,7 @@ jobs:
         with:
          workingDirectory: ./app
          coverageCommand: ./gradlew jacocoTestReport
-         coverageLocations: ${{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
+         coverageLocations: ${{github.workspace}}/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
 
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v5
