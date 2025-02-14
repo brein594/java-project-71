@@ -17,7 +17,7 @@ jobs:
         with:
           gradle-version: "8.11" # Quotes required to prevent YAML converting to number
       - name: Build with Gradle
-        run: ./app/gradlew build
+        run: ./gradlew build
         working-directory: ./app
 
       - name: Publish Test Report
