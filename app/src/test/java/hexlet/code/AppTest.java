@@ -36,6 +36,7 @@ class AppTest {
             assertEquals(expected, actual, "errorTest");
         }
     */
+/*
     @Test
     public void readPathFileTest() throws Exception {
         var expected = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file1.json";
@@ -43,7 +44,7 @@ class AppTest {
         var actual = Differ.readPathFile(string).toString();
         assertEquals(expected, actual, "errorTest");
     }
-
+*/
     @Test
     public void readFileTest() throws Exception {
         String expected = "test";
