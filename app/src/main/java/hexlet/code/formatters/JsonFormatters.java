@@ -2,7 +2,6 @@ package hexlet.code.formatters;
 
 import hexlet.code.SaveDiffer;
 
-import java.util.List;
 import java.util.Map;
 
 public class JsonFormatters {
@@ -59,7 +58,7 @@ public class JsonFormatters {
         return resultEnd.substring(0, resultEnd.length() - 1) + "\n}";
     }
 */
-    public static String getAnswerV1(SaveDiffer data) {
+    public static String getAnswerV1(SaveDiffer data) { //исправить
         var result = new StringBuilder("{");
         for (var key : data.getSortUnionKey()) {
             var currentValue = data.getChangesValue().get(key);

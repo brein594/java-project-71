@@ -3,9 +3,7 @@ package hexlet.code;
 import lombok.Getter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 
 @Getter
@@ -39,14 +37,9 @@ public class SaveDiffer {
                 currentValue[0] = "+";
                 currentValue[1] = data2.get(key);
             }
-        result.put(key,currentValue);
+            result.put(key, currentValue);
         }
-/*
-        result.forEach((key,value) -> {
-            System.out.println(key);
-            System.out.println(Arrays.toString(value));
-        });
-*/
-    return result;
+
+        return result;
     }
 }

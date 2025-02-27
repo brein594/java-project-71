@@ -4,8 +4,6 @@ import hexlet.code.formatters.PlainFormatters;
 import hexlet.code.formatters.StylishFormatters;
 import hexlet.code.formatters.JsonFormatters;
 
-import java.util.List;
-import java.util.Map;
 
 public class Formatter {
 /*
@@ -22,7 +20,7 @@ public class Formatter {
         return result;
     }
 */
-    public static String getStilishResponse1(SaveDiffer data, String formatName) {
+    public static String getStilishResponse1(SaveDiffer data, String formatName) {  //исправить
         String result;
         if (formatName.equals("plain")) {
             result = PlainFormatters.getAnswerV1(data);

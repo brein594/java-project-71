@@ -5,13 +5,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Collections;
 
-import hexlet.code.formatters.JsonFormatters;
-import hexlet.code.formatters.PlainFormatters;
-import hexlet.code.formatters.StylishFormatters;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.FilenameUtils;
 
@@ -46,7 +42,7 @@ public class Differ {
         var dataFile2 = Parser.getData(textFile2, typeFile2);
         var listUnion = listSortUnion(dataFile1, dataFile2);
         var resultDiffer = new SaveDiffer(listUnion, dataFile1, dataFile2); //создаем данные
-        return Formatter.getStilishResponse1(resultDiffer, formatName);
+        return Formatter.getStilishResponse1(resultDiffer, formatName);  //исправить
         //return Formatter.getStilishResponse(listUnion, dataFile1, dataFile2, formatName);
     }
 
