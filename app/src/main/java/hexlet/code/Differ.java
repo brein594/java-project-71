@@ -42,8 +42,7 @@ public class Differ {
         var dataFile2 = Parser.getData(textFile2, typeFile2);
         var listUnion = listSortUnion(dataFile1, dataFile2);
         var resultDiffer = new SaveDiffer(listUnion, dataFile1, dataFile2); //создаем данные
-        return Formatter.getStilishResponse1(resultDiffer, formatName);  //исправить
-        //return Formatter.getStilishResponse(listUnion, dataFile1, dataFile2, formatName);
+        return Formatter.getStilishResponse(resultDiffer, formatName);  //исправить
     }
 
     public static String generate(String filePath1, String filePath2) throws Exception {

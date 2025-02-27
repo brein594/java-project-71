@@ -17,48 +17,8 @@ public class JsonFormatters {
         }
         return value.toString();
     }
-/*
-    public static String getAnswer(List<String> unionListKey, Map<String, Object> data1, Map<String, Object> data2) {
-        var result = new StringBuilder("{");
-        for (var key : unionListKey) {
-            if (data1.getOrDefault(key, null) != null) {
-                if (data2.getOrDefault(key, null) != null) {
-                    if (!data1.get(key).equals(data2.get(key))) {
-                        result.append(System.lineSeparator());
-                        result.append("    \"");
-                        result.append(key);
-                        result.append("\": [ ");
-                        result.append(complexValue(data1.get(key)));
-                        result.append(", ");
-                        result.append(complexValue(data2.get(key)));
-                        result.append(" ],");
-                    }
-                } else {
-                    result.append(System.lineSeparator());
-                    result.append("    \"");
-                    result.append(key);
-                    result.append("\": ");
-                    result.append("[ ");
-                    result.append(complexValue(data1.get(key)));
-                    result.append(", \"not_value\" ],");
-                }
-            } else if (data2.getOrDefault(key, null) != null) {
-                result.append(System.lineSeparator());
-                result.append("    \"");
-                result.append(key);
-                result.append("\": ");
-                result.append("[ \"not_value\", ");
-                result.append(complexValue(data2.get(key)));
-                result.append(" ],");
-            } else {
-                result.append(System.lineSeparator());
-            }
-        }
-        var resultEnd = result.toString();
-        return resultEnd.substring(0, resultEnd.length() - 1) + "\n}";
-    }
-*/
-    public static String getAnswerV1(SaveDiffer data) { //исправить
+
+    public static String getAnswer(SaveDiffer data) { //исправить
         var result = new StringBuilder("{");
         for (var key : data.getSortUnionKey()) {
             var currentValue = data.getChangesValue().get(key);

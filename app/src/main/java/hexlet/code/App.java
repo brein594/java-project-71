@@ -25,7 +25,6 @@ class App implements Callable<String> {
     private boolean help = true;
     @Option(names = {"-V", "--version"}, versionHelp = true, description = "Print version information and exit.")
     private boolean version = true;
-
  */
     @Option(names = {"-f", "--format"}, defaultValue = "stylish", description = "output format [default: stylish]")
     private String formatName;
