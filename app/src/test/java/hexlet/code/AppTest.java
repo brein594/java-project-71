@@ -25,26 +25,22 @@ class AppTest {
         assertEquals(expected, actual, "errorTest");
     }
 
-    /*
-        @Test
-        public void getDataYmlWorkTest() throws Exception {
-            var expected = new HashMap<String, Object>(Map.of("host", "hexlet.io", "timeout", "50"));
-            var string = "host: hexlet.io\ntimeout: 50";
-            var actual = Parser.getDataYml(string);
-            System.out.println(expected);
-            System.out.println(actual);
-            assertEquals(expected, actual, "errorTest");
-        }
-    */
-/*
     @Test
-    public void readPathFileTest() throws Exception {
-        var expected = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/file1.json";
-        var string = "./src/test/resources/file1.json";
-        var actual = Differ.readPathFile(string).toString();
+    public void getDataWorkYAMLTest() throws Exception {
+        var expected = new HashMap<String, Object>(Map.of("host", "hexlet.io", "timeout", "50"));
+        var string = "{ \"host\" : \"hexlet.io\", \"timeout\" : \"50\" }";
+        var actual = Parser.getData(string, "yaml");
         assertEquals(expected, actual, "errorTest");
     }
-*/
+
+    @Test
+    public void getDataWorkDefaultTest() throws Exception {
+        var expected = new HashMap<String, Object>(Map.of("host", "hexlet.io", "timeout", "50"));
+        var string = "{ \"host\" : \"hexlet.io\", \"timeout\" : \"50\" }";
+        var actual = Parser.getData(string, "def");
+        assertEquals(expected, actual, "errorTest");
+    }
+
     @Test
     public void readFileTest() throws Exception {
         String expected = "test";
@@ -119,39 +115,6 @@ class AppTest {
         assertEquals(expected, actual, "errorTest");
     }
 
-    @Test
-    public void generateStylish_V1_Step9Test() throws Exception {
-        String expected =
-                "{\n"
-                        + "    chars1: [a, b, c]\n"
-                        + "  - chars2: [d, e, f]\n"
-                        + "  + chars2: false\n"
-                        + "  - checked: false\n"
-                        + "  + checked: true\n"
-                        + "  - default: null\n"
-                        + "  + default: [value1, value2]\n"
-                        + "  - id: 45\n"
-                        + "  + id: null\n"
-                        + "  - key1: value1\n"
-                        + "  + key2: value2\n"
-                        + "    numbers1: [1, 2, 3, 4]\n"
-                        + "  - numbers2: [2, 3, 4, 5]\n"
-                        + "  + numbers2: [22, 33, 44, 55]\n"
-                        + "  - numbers3: [3, 4, 5]\n"
-                        + "  + numbers4: [4, 5, 6]\n"
-                        + "  + obj1: {nestedKey=value, isNested=true}\n"
-                        + "  - setting1: Some value\n"
-                        + "  + setting1: Another value\n"
-                        + "  - setting2: 200\n"
-                        + "  + setting2: 300\n"
-                        + "  - setting3: true\n"
-                        + "  + setting3: none\n"
-                        + "}";
-        var path1 = "./src/test/resources/file1s9.json";
-        var path2 = "./src/test/resources/file2s9.json";
-        String actual = Differ.generate(path1, path2, "stylish");
-        assertEquals(expected, actual, "errorTest");
-    }
 
     @Test
     public void generatePlainStep9Test() throws Exception {

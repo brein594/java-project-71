@@ -18,7 +18,7 @@ public class JsonFormatters {
         }
         return value.toString();
     }
-
+/*
     public static String getAnswer(List<String> unionListKey, Map<String, Object> data1, Map<String, Object> data2) {
         var result = new StringBuilder("{");
         for (var key : unionListKey) {
@@ -58,7 +58,7 @@ public class JsonFormatters {
         var resultEnd = result.toString();
         return resultEnd.substring(0, resultEnd.length() - 1) + "\n}";
     }
-
+*/
     public static String getAnswerV1(SaveDiffer data) {
         var result = new StringBuilder("{");
         for (var key : data.getSortUnionKey()) {

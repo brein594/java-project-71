@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Formatter {
-
+/*
     public static String getStilishResponse(List<String> unionListKey, Map<String, Object> data1,
                                             Map<String, Object> data2, String formatName) {
         String result;
@@ -21,7 +21,7 @@ public class Formatter {
         }
         return result;
     }
-
+*/
     public static String getStilishResponse1(SaveDiffer data, String formatName) {
         String result;
         if (formatName.equals("plain")) {

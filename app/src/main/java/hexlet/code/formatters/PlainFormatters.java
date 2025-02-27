@@ -19,7 +19,7 @@ public class PlainFormatters {
         }
         return value.toString();
     }
-
+/*
     public static String getAnswer(List<String> unionListKey, Map<String, Object> data1, Map<String, Object> data2) {
         var result = new StringBuilder();
         for (var key : unionListKey) {
@@ -66,7 +66,7 @@ public class PlainFormatters {
         }
         return result.toString();
     }
-
+*/
     public static String getAnswerV1(SaveDiffer data) {
         var result = new StringBuilder();
         for (var key : data.getSortUnionKey()) {
