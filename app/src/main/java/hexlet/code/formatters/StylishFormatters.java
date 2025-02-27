@@ -1,5 +1,7 @@
 package hexlet.code.formatters;
 
+import hexlet.code.SaveDiffer;
+
 import java.util.List;
 import java.util.Map;
 
@@ -42,6 +44,45 @@ public class StylishFormatters {
                 result.append(data2.get(key));
                 result.append(System.lineSeparator());
             } else {
+                result.append(System.lineSeparator());
+            }
+        }
+        result.append("}");
+        return result.toString();
+    }
+
+    public static String getAnswerV1(SaveDiffer data) {
+        var result = new StringBuilder("{\n");
+        for (var key : data.getSortUnionKey()) {
+            var currentValue = data.getChangesValue().get(key);
+            if (currentValue[0].equals("=")) {
+                result.append("    ");
+                result.append(key);
+                result.append(": ");
+                result.append(currentValue[1]);
+                result.append(System.lineSeparator());
+            } else if (currentValue[0].equals("+")) {
+                result.append("  + ");
+                result.append(key);
+                result.append(": ");
+                result.append(currentValue[1]);
+                result.append(System.lineSeparator());
+            } else if (currentValue[0].equals("-")) {
+                result.append("  - ");
+                result.append(key);
+                result.append(": ");
+                result.append(currentValue[1]);
+                result.append(System.lineSeparator());
+            } else {
+                result.append("  - ");
+                result.append(key);
+                result.append(": ");
+                result.append(currentValue[0]);
+                result.append(System.lineSeparator());
+                result.append("  + ");
+                result.append(key);
+                result.append(": ");
+                result.append(currentValue[1]);
                 result.append(System.lineSeparator());
             }
         }

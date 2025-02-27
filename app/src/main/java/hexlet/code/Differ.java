@@ -9,12 +9,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Collections;
 
+import hexlet.code.formatters.JsonFormatters;
+import hexlet.code.formatters.PlainFormatters;
+import hexlet.code.formatters.StylishFormatters;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.FilenameUtils;
 
 public class Differ {
 
-    public static Path readPathFile(String filepath) {
+    private static Path readPathFile(String filepath) {
         return Paths.get(filepath).toAbsolutePath().normalize();
     }
 
@@ -26,7 +29,7 @@ public class Differ {
         return FilenameUtils.getExtension(String.valueOf(path));
     }
 
-    private static List<String> listSortUnion(Map<String, Object> data1, Map<String, Object> data2) {
+    private static ArrayList<String> listSortUnion(Map<String, Object> data1, Map<String, Object> data2) {
         var dataKeys1 = new ArrayList<>(data1.keySet());
         var dataKeys2 = new ArrayList<>(data2.keySet());
         var unionSortKeys = new ArrayList<>(CollectionUtils.union(dataKeys1, dataKeys2));
@@ -42,7 +45,9 @@ public class Differ {
         var dataFile1 = Parser.getData(textFile1, typeFile1);
         var dataFile2 = Parser.getData(textFile2, typeFile2);
         var listUnion = listSortUnion(dataFile1, dataFile2);
-        return Formatter.getStilishResponse(listUnion, dataFile1, dataFile2, formatName);
+        var resultDiffer = new SaveDiffer(listUnion, dataFile1, dataFile2); //создаем данные
+        return Formatter.getStilishResponse1(resultDiffer, formatName);
+        //return Formatter.getStilishResponse(listUnion, dataFile1, dataFile2, formatName);
     }
 
     public static String generate(String filePath1, String filePath2) throws Exception {
