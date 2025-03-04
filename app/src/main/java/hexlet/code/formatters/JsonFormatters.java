@@ -18,7 +18,7 @@ public class JsonFormatters {
         return value.toString();
     }
 
-    public static String getAnswer(SaveDiffer data) { //исправить
+    public static String getAnswer(SaveDiffer data) {
         var result = new StringBuilder("{");
         for (var key : data.getSortUnionKey()) {
             var currentValue = data.getChangesValue().get(key);

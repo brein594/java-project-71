@@ -4,7 +4,7 @@ import hexlet.code.SaveDiffer;
 
 public class StylishFormatters {
 
-    public static String getAnswer(SaveDiffer data) { //исправить
+    public static String getAnswer(SaveDiffer data) {
         var result = new StringBuilder("{\n");
         for (var key : data.getSortUnionKey()) {
             var currentValue = data.getChangesValue().get(key);
