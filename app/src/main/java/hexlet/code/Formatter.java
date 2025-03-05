@@ -4,20 +4,24 @@ import hexlet.code.formatters.PlainFormatters;
 import hexlet.code.formatters.StylishFormatters;
 import hexlet.code.formatters.JsonFormatters;
 
+import java.util.LinkedHashMap;
+
 
 public class Formatter {
 
-    public static String getStilishResponse(SaveDiffer data, String formatName) {  //исправить
+    public static String format(LinkedHashMap<String, Object[]> data, String formatName) {
         String result;
-        if (formatName.equals("plain")) {
-            result = PlainFormatters.getAnswer(data);
-        } else if (formatName.equals("json")) {
-            result = JsonFormatters.getAnswer(data);
-        } else {
-            result = StylishFormatters.getAnswer(data);
+        switch (formatName.toLowerCase()) {
+            case "plain":
+                result = PlainFormatters.getAnswer(data);
+                break;
+            case "json":
+                result = JsonFormatters.getAnswer(data);
+                break;
+            default:
+                result = StylishFormatters.getAnswer(data);
         }
         return result;
     }
-
 }
 

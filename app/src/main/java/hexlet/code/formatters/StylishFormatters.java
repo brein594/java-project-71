@@ -1,13 +1,14 @@
 package hexlet.code.formatters;
 
-import hexlet.code.SaveDiffer;
+import java.util.LinkedHashMap;
 
 public class StylishFormatters {
 
-    public static String getAnswer(SaveDiffer data) {
+    public static String getAnswer(LinkedHashMap<String, Object[]> data) {
         var result = new StringBuilder("{\n");
-        for (var key : data.getSortUnionKey()) {
-            var currentValue = data.getChangesValue().get(key);
+        var keys = data.keySet();
+        for (var key : keys) {
+            var currentValue = data.get(key);
             if (currentValue[0].equals("=")) {
                 result.append("    ");
                 result.append(key);

@@ -1,7 +1,6 @@
 package hexlet.code.formatters;
 
-import hexlet.code.SaveDiffer;
-
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class JsonFormatters {
@@ -18,10 +17,12 @@ public class JsonFormatters {
         return value.toString();
     }
 
-    public static String getAnswer(SaveDiffer data) {
+    public static String getAnswer(LinkedHashMap<String, Object[]> data) {
         var result = new StringBuilder("{");
-        for (var key : data.getSortUnionKey()) {
-            var currentValue = data.getChangesValue().get(key);
+        //for (var key : data.getSortUnionKey()) {
+        var keys = data.keySet();
+        for (var key : keys) {
+            var currentValue = data.get(key);
             if (currentValue[0].equals("=")) {
                 continue;
             } else if (currentValue[0].equals("+")) {

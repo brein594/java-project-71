@@ -4,21 +4,24 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 
 @Getter
 public class SaveDiffer {
+    /*
     private ArrayList<String> sortUnionKey;
     private HashMap<String, Object[]> changesValue;
 
     SaveDiffer(ArrayList<String> sortUnionKey, HashMap<String, Object> data1, HashMap<String, Object> data2) {
         this.sortUnionKey = sortUnionKey;
-        this.changesValue = bildChangesValue(data1, data2);
-    }
-
-    private HashMap<String, Object[]> bildChangesValue(HashMap<String, Object> data1, HashMap<String, Object> data2) {
-        var result = new HashMap<String, Object[]>();
-        for (var key : sortUnionKey) {
+        this.changesValue = buildChangesValue(data1, data2);
+    */
+    public static LinkedHashMap<String, Object[]> buildChangesValue(ArrayList<String> list,
+                                                                    HashMap<String, Object> data1,
+                                                                    HashMap<String, Object> data2) {
+        var result = new LinkedHashMap<String, Object[]>();
+        for (var key : list) {
             Object[] currentValue = new Object[2];
             if (data1.getOrDefault(key, null) != null) {
                 if (data2.getOrDefault(key, null) != null) {
@@ -39,7 +42,6 @@ public class SaveDiffer {
             }
             result.put(key, currentValue);
         }
-
         return result;
     }
 }

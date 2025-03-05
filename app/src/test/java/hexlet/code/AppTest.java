@@ -51,6 +51,22 @@ class AppTest {
     }
 
     @Test
+    public void generateStylishVoidTest() throws Exception {
+        String expected = "{\n"
+                + "  - follow: false\n"
+                + "    host: hexlet.io\n"
+                + "  - proxy: 123.234.53.22\n"
+                + "  - timeout: 50\n"
+                + "  + timeout: 20\n"
+                + "  + verbose: true\n"
+                + "}";
+        var path1 = "./src/test/resources/file1.json";
+        var path2 = "./src/test/resources/file2.json";
+        String actual = Differ.generate(path1, path2);
+        assertEquals(expected, actual, "errorTest");
+    }
+
+    @Test
     public void generateStylishTest() throws Exception {
         String expected = "{\n"
                 + "  - follow: false\n"
@@ -118,8 +134,6 @@ class AppTest {
 
     @Test
     public void generatePlainStep9Test() throws Exception {
-        //String fileResult = "/home/hexlet/play_brain/java-project-71/app/src/test/resources/PlainTest.txt";
-        //String expected = Differ.readFile(Differ.readPathFile(fileResult));
         String expected =
                 "Property 'chars2' was updated. From [complex value] to false\n"
                         + "Property 'checked' was updated. From false to true\n"

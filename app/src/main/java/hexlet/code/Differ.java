@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Collections;
 
@@ -33,16 +34,18 @@ public class Differ {
         return unionSortKeys;
     }
 
+    private static HashMap<String, Object> getData(String filePath) throws Exception {
+        var textFile = readFile(readPathFile(filePath));
+        var typeFile = getTypeFile(readPathFile(filePath));
+        return Parser.getData(textFile, typeFile);
+    }
+
     public static String generate(String filePath1, String filePath2, String formatName) throws Exception {
-        var textFile1 = readFile(readPathFile(filePath1));
-        var textFile2 = readFile(readPathFile(filePath2));
-        var typeFile1 = getTypeFile(readPathFile(filePath1));
-        var typeFile2 = getTypeFile(readPathFile(filePath2));
-        var dataFile1 = Parser.getData(textFile1, typeFile1);
-        var dataFile2 = Parser.getData(textFile2, typeFile2);
+        var dataFile1 = getData(filePath1);
+        var dataFile2 = getData(filePath2);
         var listUnion = listSortUnion(dataFile1, dataFile2);
-        var resultDiffer = new SaveDiffer(listUnion, dataFile1, dataFile2); //создаем данные
-        return Formatter.getStilishResponse(resultDiffer, formatName);  //исправить
+        var resultDiffer = SaveDiffer.buildChangesValue(listUnion, dataFile1, dataFile2); //создаем данные
+        return Formatter.format(resultDiffer, formatName);
     }
 
     public static String generate(String filePath1, String filePath2) throws Exception {
