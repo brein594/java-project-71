@@ -157,26 +157,26 @@ class AppTest {
     @Test
     public void generateJsonStep11Test() throws Exception {
         String expected =
-                "{\n" +
-                        "  \"chars1\" : [ \"=\", [ \"a\", \"b\", \"c\" ] ],\n" +
-                        "  \"chars2\" : [ [ \"d\", \"e\", \"f\" ], false ],\n" +
-                        "  \"checked\" : [ false, true ],\n" +
-                        "  \"default\" : [ \"null\", [ \"value1\", \"value2\" ] ],\n" +
-                        "  \"id\" : [ 45, \"null\" ],\n" +
-                        "  \"key1\" : [ \"-\", \"value1\" ],\n" +
-                        "  \"key2\" : [ \"+\", \"value2\" ],\n" +
-                        "  \"numbers1\" : [ \"=\", [ 1, 2, 3, 4 ] ],\n" +
-                        "  \"numbers2\" : [ [ 2, 3, 4, 5 ], [ 22, 33, 44, 55 ] ],\n" +
-                        "  \"numbers3\" : [ \"-\", [ 3, 4, 5 ] ],\n" +
-                        "  \"numbers4\" : [ \"+\", [ 4, 5, 6 ] ],\n" +
-                        "  \"obj1\" : [ \"+\", {\n" +
-                        "    \"nestedKey\" : \"value\",\n" +
-                        "    \"isNested\" : true\n" +
-                        "  } ],\n" +
-                        "  \"setting1\" : [ \"Some value\", \"Another value\" ],\n" +
-                        "  \"setting2\" : [ 200, 300 ],\n" +
-                        "  \"setting3\" : [ true, \"none\" ]\n" +
-                        "}";
+                "{\n"
+                       + "  \"chars1\" : [ \"=\", [ \"a\", \"b\", \"c\" ] ],\n"
+                       + "  \"chars2\" : [ [ \"d\", \"e\", \"f\" ], false ],\n"
+                       + "  \"checked\" : [ false, true ],\n"
+                       + "  \"default\" : [ \"null\", [ \"value1\", \"value2\" ] ],\n"
+                       + "  \"id\" : [ 45, \"null\" ],\n"
+                       + "  \"key1\" : [ \"-\", \"value1\" ],\n"
+                       + "  \"key2\" : [ \"+\", \"value2\" ],\n"
+                       + "  \"numbers1\" : [ \"=\", [ 1, 2, 3, 4 ] ],\n"
+                       + "  \"numbers2\" : [ [ 2, 3, 4, 5 ], [ 22, 33, 44, 55 ] ],\n"
+                       + "  \"numbers3\" : [ \"-\", [ 3, 4, 5 ] ],\n"
+                       + "  \"numbers4\" : [ \"+\", [ 4, 5, 6 ] ],\n"
+                       + "  \"obj1\" : [ \"+\", {\n"
+                       + "    \"nestedKey\" : \"value\",\n"
+                       + "    \"isNested\" : true\n"
+                       + "  } ],\n"
+                       + "  \"setting1\" : [ \"Some value\", \"Another value\" ],\n"
+                       + "  \"setting2\" : [ 200, 300 ],\n"
+                       + "  \"setting3\" : [ true, \"none\" ]\n"
+                       + "}";
         var path1 = "./src/test/resources/file1s9.json";
         var path2 = "./src/test/resources/file2s9.json";
         String actual = Differ.generate(path1, path2, "json");
