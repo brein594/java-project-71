@@ -10,7 +10,8 @@ import java.util.LinkedHashMap;
 
 public class Formatter {
 
-    public static String format(LinkedHashMap<String, Object[]> data, String formatName) throws JsonProcessingException {
+    public static String format(LinkedHashMap<String, Object[]> data, String formatName)
+            throws JsonProcessingException {
         String result;
         switch (formatName.toLowerCase()) {
             case "plain":
