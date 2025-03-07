@@ -10,34 +10,13 @@ public class StylishFormatters {
         for (var key : keys) {
             var currentValue = data.get(key);
             if (currentValue[0].equals("=")) {
-                result.append("    ");
-                result.append(key);
-                result.append(": ");
-                result.append(currentValue[1]);
-                result.append(System.lineSeparator());
+                result.append(String.format("    %s: %s\n", key, currentValue[1]));
             } else if (currentValue[0].equals("+")) {
-                result.append("  + ");
-                result.append(key);
-                result.append(": ");
-                result.append(currentValue[1]);
-                result.append(System.lineSeparator());
+                result.append(String.format("  + %s: %s\n", key, currentValue[1]));
             } else if (currentValue[0].equals("-")) {
-                result.append("  - ");
-                result.append(key);
-                result.append(": ");
-                result.append(currentValue[1]);
-                result.append(System.lineSeparator());
+                result.append(String.format("  - %s: %s\n", key, currentValue[1]));
             } else {
-                result.append("  - ");
-                result.append(key);
-                result.append(": ");
-                result.append(currentValue[0]);
-                result.append(System.lineSeparator());
-                result.append("  + ");
-                result.append(key);
-                result.append(": ");
-                result.append(currentValue[1]);
-                result.append(System.lineSeparator());
+                result.append(String.format("  - %s: %s\n  + %s: %s\n", key, currentValue[0], key, currentValue[1]));
             }
         }
         result.append("}");

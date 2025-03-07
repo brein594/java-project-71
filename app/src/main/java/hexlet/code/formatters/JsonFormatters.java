@@ -26,30 +26,14 @@ public class JsonFormatters {
             if (currentValue[0].equals("=")) {
                 continue;
             } else if (currentValue[0].equals("+")) {
-                result.append(System.lineSeparator());
-                result.append("    \"");
-                result.append(key);
-                result.append("\": ");
-                result.append("[ \"not_value\", ");
-                result.append(complexValue(currentValue[1]));
-                result.append(" ],");
+                result.append(String.format("\n    \"%s\": [ \"not_value\", %s ],", key,
+                        complexValue(currentValue[1])));
             } else if (currentValue[0].equals("-")) {
-                result.append(System.lineSeparator());
-                result.append("    \"");
-                result.append(key);
-                result.append("\": ");
-                result.append("[ ");
-                result.append(complexValue(currentValue[1]));
-                result.append(", \"not_value\" ],");
+                result.append(String.format("\n    \"%s\": [ %s, \"not_value\" ],", key,
+                        complexValue(currentValue[1])));
             } else {
-                result.append(System.lineSeparator());
-                result.append("    \"");
-                result.append(key);
-                result.append("\": [ ");
-                result.append(complexValue(currentValue[0]));
-                result.append(", ");
-                result.append(complexValue(currentValue[1]));
-                result.append(" ],");
+                result.append(String.format("\n    \"%s\": [ %s, %s ],", key, complexValue(currentValue[0]),
+                        complexValue(currentValue[1])));
             }
         }
         var resultEnd = result.toString();

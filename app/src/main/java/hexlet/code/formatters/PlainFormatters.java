@@ -24,7 +24,6 @@ public class PlainFormatters {
         //for (var key : data.getSortUnionKey()) {
         var keys = data.keySet();
         for (var key : keys) {
-            //var currentValue = data.getChangesValue().get(key);
             var currentValue = data.get(key);
             if (currentValue[0].equals("=")) {
                 continue;
@@ -32,27 +31,19 @@ public class PlainFormatters {
                 if (result.length() != 0) {
                     result.append(System.lineSeparator());
                 }
-                result.append("Property '");
-                result.append(key);
-                result.append("' was added with value: ");
-                result.append(complexValue(currentValue[1]));
+                result.append(String.format("Property '%s' was added with value: %s", key,
+                        complexValue(currentValue[1])));
             } else if (currentValue[0].equals("-")) {
                 if (result.length() != 0) {
                     result.append(System.lineSeparator());
                 }
-                result.append("Property '");
-                result.append(key);
-                result.append("' was removed");
+                result.append(String.format("Property '%s' was removed", key));
             } else {
                 if (result.length() != 0) {
                     result.append(System.lineSeparator());
                 }
-                result.append("Property '");
-                result.append(key);
-                result.append("' was updated. From ");
-                result.append(complexValue(currentValue[0]));
-                result.append(" to ");
-                result.append(complexValue(currentValue[1]));
+                result.append(String.format("Property '%s' was updated. From %s to %s", key,
+                        complexValue(currentValue[0]), complexValue(currentValue[1])));
             }
         }
         return result.toString();
