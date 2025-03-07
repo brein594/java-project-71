@@ -21,7 +21,6 @@ public class PlainFormatters {
 
     public static String getAnswer(LinkedHashMap<String, Object[]> data) {
         var result = new StringBuilder();
-        //for (var key : data.getSortUnionKey()) {
         var keys = data.keySet();
         for (var key : keys) {
             var currentValue = data.get(key);

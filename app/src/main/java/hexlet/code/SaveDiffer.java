@@ -9,14 +9,7 @@ import java.util.LinkedHashMap;
 
 @Getter
 public class SaveDiffer {
-    /*
-    private ArrayList<String> sortUnionKey;
-    private HashMap<String, Object[]> changesValue;
 
-    SaveDiffer(ArrayList<String> sortUnionKey, HashMap<String, Object> data1, HashMap<String, Object> data2) {
-        this.sortUnionKey = sortUnionKey;
-        this.changesValue = buildChangesValue(data1, data2);
-    */
     public static LinkedHashMap<String, Object[]> buildChangesValue(ArrayList<String> list,
                                                                     HashMap<String, Object> data1,
                                                                     HashMap<String, Object> data2) {

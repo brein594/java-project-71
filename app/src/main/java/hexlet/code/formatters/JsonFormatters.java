@@ -1,5 +1,8 @@
 package hexlet.code.formatters;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -17,9 +20,12 @@ public class JsonFormatters {
         return value.toString();
     }
 
-    public static String getAnswer(LinkedHashMap<String, Object[]> data) {
+    public static String getAnswer(LinkedHashMap<String, Object[]> data)  throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jacksonData = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(data);
+        return jacksonData;
+        /*
         var result = new StringBuilder("{");
-        //for (var key : data.getSortUnionKey()) {
         var keys = data.keySet();
         for (var key : keys) {
             var currentValue = data.get(key);
@@ -38,5 +44,8 @@ public class JsonFormatters {
         }
         var resultEnd = result.toString();
         return resultEnd.substring(0, resultEnd.length() - 1) + "\n}";
+
+         */
+
     }
 }
