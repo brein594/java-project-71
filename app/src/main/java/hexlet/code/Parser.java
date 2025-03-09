@@ -21,6 +21,11 @@ public class Parser {
 
     public static HashMap<String, Object> getData(String content, String type) throws Exception {
         switch (type) {
+            case "stylish":
+                ObjectMapper mapperDef = new ObjectMapper();
+                var resultYDef = mapperDef.readValue(content, new TypeReference<HashMap<String, Object>>() {
+                });
+                return replacementNullToStringNull(resultYDef);
             case "json":
                 ObjectMapper mapperJson = new ObjectMapper();
                 var resultJson = mapperJson.readValue(content, new TypeReference<HashMap<String, Object>>() {
@@ -37,10 +42,8 @@ public class Parser {
                 });
                 return replacementNullToStringNull(resultYaml);
             default:
-                ObjectMapper mapperDef = new ObjectMapper();
-                var resultYDef = mapperDef.readValue(content, new TypeReference<HashMap<String, Object>>() {
-                });
-                return replacementNullToStringNull(resultYDef);
+                throw new Exception("Please enter format json/yaml/yml or no enter format");
+
         }
     }
 

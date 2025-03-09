@@ -14,7 +14,7 @@ import org.apache.commons.io.FilenameUtils;
 
 public class Differ {
 
-    private static Path readPathFile(String filepath) {
+    public static Path readPathFile(String filepath) {
         return Paths.get(filepath).toAbsolutePath().normalize();
     }
 
