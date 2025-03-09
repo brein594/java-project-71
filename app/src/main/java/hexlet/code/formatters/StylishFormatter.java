@@ -2,7 +2,7 @@ package hexlet.code.formatters;
 
 import java.util.LinkedHashMap;
 
-public class stylishFormatter {
+public class StylishFormatter {
 
     public static String getAnswer(LinkedHashMap<String, Object[]> data) {
         var result = new StringBuilder("{\n");

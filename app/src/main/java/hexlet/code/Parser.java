@@ -20,31 +20,20 @@ public class Parser {
     }
 
     public static HashMap<String, Object> getData(String content, String type) throws Exception {
-        switch (type) {
-            case "stylish":
+        var result = switch (type) {
+            case "stylish", "json" -> {
                 ObjectMapper mapperDef = new ObjectMapper();
-                var resultYDef = mapperDef.readValue(content, new TypeReference<HashMap<String, Object>>() {
+                yield mapperDef.readValue(content, new TypeReference<HashMap<String, Object>>() {
                 });
-                return replacementNullToStringNull(resultYDef);
-            case "json":
-                ObjectMapper mapperJson = new ObjectMapper();
-                var resultJson = mapperJson.readValue(content, new TypeReference<HashMap<String, Object>>() {
-                });
-                return replacementNullToStringNull(resultJson);
-            case "yml":
+            }
+            case "yml", "yaml" -> {
                 ObjectMapper mapperYml = new YAMLMapper();
-                var resultYml = mapperYml.readValue(content, new TypeReference<HashMap<String, Object>>() {
+                yield mapperYml.readValue(content, new TypeReference<HashMap<String, Object>>() {
                 });
-                return replacementNullToStringNull(resultYml);
-            case "yaml":
-                ObjectMapper mapperYaml = new YAMLMapper();
-                var resultYaml = mapperYaml.readValue(content, new TypeReference<HashMap<String, Object>>() {
-                });
-                return replacementNullToStringNull(resultYaml);
-            default:
-                throw new Exception("Please enter format json/yaml/yml or no enter format");
-
-        }
+            }
+            default -> throw new Exception("Please enter format json/yaml/yml or no enter format");
+        };
+        return replacementNullToStringNull(result);
     }
 
 }
