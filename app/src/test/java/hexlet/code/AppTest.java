@@ -52,15 +52,19 @@ class AppTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-        "stylish, ./src/test/resources/file1_stylish.txt, ./src/test/resources/file1.json, ./src/test/resources/file2.json",
+        "stylish, ./src/test/resources/file1_stylish.txt, ./src/test/resources/file1.json, "
+                + "./src/test/resources/file2.json",
         "plain, ./src/test/resources/file1_plain.txt, ./src/test/resources/file1.json, ./src/test/resources/file2.json",
         "stylish, ./src/test/resources/file2_stylish.txt, ./src/test/resources/file1s9.json, "
                 + "./src/test/resources/file2s9.json",
-        "plain, ./src/test/resources/file2_plain.txt, ./src/test/resources/file1s9.json, ./src/test/resources/file2s9.json",
-        "json, ./src/test/resources/file2_json.txt, ./src/test/resources/file1s9.json, ./src/test/resources/file2s9.json",
+        "plain, ./src/test/resources/file2_plain.txt, ./src/test/resources/file1s9.json, "
+                + "./src/test/resources/file2s9.json",
+        "json, ./src/test/resources/file2_json.txt, ./src/test/resources/file1s9.json, "
+                + "./src/test/resources/file2s9.json",
         "stylish, ./src/test/resources/file2_stylish.txt, ./src/test/resources/file1s9.yml, "
                 + "./src/test/resources/file2s9.yml",
-        "plain, ./src/test/resources/file2_plain.txt, ./src/test/resources/file1s9.yml, ./src/test/resources/file2s9.yml",
+        "plain, ./src/test/resources/file2_plain.txt, ./src/test/resources/file1s9.yml, "
+                + "./src/test/resources/file2s9.yml",
         "json, ./src/test/resources/file2_json.txt, ./src/test/resources/file1s9.yml, ./src/test/resources/file2s9.yml"
     }, ignoreLeadingAndTrailingWhitespace = true)
     public void generateTest(String style, String filePathAnswer, String file1Path, String file2Path) throws Exception {
