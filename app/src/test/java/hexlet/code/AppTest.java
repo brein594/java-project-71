@@ -43,7 +43,7 @@ class AppTest {
 
 
     public void generateStylishVoidTest() throws Exception {
-        String expected = Differ.readFile(Differ.readPathFile("./src/test/resources/file1_stylish"));
+        String expected = Differ.readFile(Differ.readPathFile("./src/test/resources/file1_stylish.txt"));
         var path1 = "./src/test/resources/file1.json";
         var path2 = "./src/test/resources/file2.json";
         String actual = Differ.generate(path1, path2);
@@ -52,42 +52,23 @@ class AppTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-        "stylish, ./src/test/resources/file1_stylish",
-        "plain, ./src/test/resources/file1_plain"
+        "stylish, ./src/test/resources/file1_stylish.txt, ./src/test/resources/file1.json, ./src/test/resources/file2.json",
+        "plain, ./src/test/resources/file1_plain.txt, ./src/test/resources/file1.json, ./src/test/resources/file2.json",
+        "stylish, ./src/test/resources/file2_stylish.txt, ./src/test/resources/file1s9.json, "
+                + "./src/test/resources/file2s9.json",
+        "plain, ./src/test/resources/file2_plain.txt, ./src/test/resources/file1s9.json, ./src/test/resources/file2s9.json",
+        "json, ./src/test/resources/file2_json.txt, ./src/test/resources/file1s9.json, ./src/test/resources/file2s9.json",
+        "stylish, ./src/test/resources/file2_stylish.txt, ./src/test/resources/file1s9.yml, "
+                + "./src/test/resources/file2s9.yml",
+        "plain, ./src/test/resources/file2_plain.txt, ./src/test/resources/file1s9.yml, ./src/test/resources/file2s9.yml",
+        "json, ./src/test/resources/file2_json.txt, ./src/test/resources/file1s9.yml, ./src/test/resources/file2s9.yml"
     }, ignoreLeadingAndTrailingWhitespace = true)
-    public void generateTest1(String style, String filePath) throws Exception {
-        String expected = Differ.readFile(Differ.readPathFile(filePath));
-        var path1 = "./src/test/resources/file1.json";
-        var path2 = "./src/test/resources/file2.json";
+    public void generateTest(String style, String filePathAnswer, String file1Path, String file2Path) throws Exception {
+        String expected = Differ.readFile(Differ.readPathFile(filePathAnswer));
+        var path1 = file1Path;
+        var path2 = file2Path;
         String actual = Differ.generate(path1, path2, style);
         assertEquals(expected, actual);
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {
-        "stylish, ./src/test/resources/file2_stylish",
-        "plain, ./src/test/resources/file2_plain",
-        "json, ./src/test/resources/file2_json"
-    }, ignoreLeadingAndTrailingWhitespace = true)
-    public void generateJsonTest(String style, String filePath) throws Exception {
-        String expected = Differ.readFile(Differ.readPathFile(filePath));
-        var path1 = "./src/test/resources/file1s9.json";
-        var path2 = "./src/test/resources/file2s9.json";
-        String actual = Differ.generate(path1, path2, style);
-        assertEquals(expected, actual);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {
-        "stylish, ./src/test/resources/file2_stylish",
-        "plain, ./src/test/resources/file2_plain",
-        "json, ./src/test/resources/file2_json"
-    }, ignoreLeadingAndTrailingWhitespace = true)
-    public void generateYamlTest(String style, String filePath) throws Exception {
-        String expected = Differ.readFile(Differ.readPathFile(filePath));
-        var path1 = "./src/test/resources/file1s9.yml";
-        var path2 = "./src/test/resources/file2s9.yml";
-        String actual = Differ.generate(path1, path2, style);
-        assertEquals(expected, actual);
-    }
 }
